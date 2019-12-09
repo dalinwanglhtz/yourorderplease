@@ -1,5 +1,7 @@
 package com.codewardev;
 
+// https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/java
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,8 +14,7 @@ public class Order {
 		if(words.isEmpty()) return "";
 		
 		String[] word = words.split(" ");
-		String patternStr = "[0-9]";
-		Pattern pattern = Pattern.compile(patternStr);
+		Pattern pattern = Pattern.compile("[0-9]");
 		for(int i=0; i<word.length; i++) {
 			Matcher matcher = pattern.matcher(word[i]);
 			int digit=-1;
