@@ -13,19 +13,13 @@ public class Order {
 		
 		if(words.isEmpty()) return "";
 		
-		String[] word = words.split(" ");
 		Pattern pattern = Pattern.compile("[0-9]");
-		for(int i=0; i<word.length; i++) {
-			Matcher matcher = pattern.matcher(word[i]);
-			int digit= matcher.find() ? Character.getNumericValue(word[i].charAt(matcher.start())) : -1;
-			word[i] = digit + word[i];
-		}
-		
-		return Arrays
-				.stream(word)
-				.sorted()
-				.map(x->x.substring(1))
-				.collect(Collectors.joining(" "));
+		return Arrays.stream(words.split(" ")).map(x -> {
+			Matcher matcher = pattern.matcher(x);
+			int digit= matcher.find() ? Character.getNumericValue(x.charAt(matcher.start())) : -1;
+			x = digit + x;
+			return x;
+		}).sorted().map(x -> x.substring(1)).collect(Collectors.joining(" "));
 	}
 
 }
