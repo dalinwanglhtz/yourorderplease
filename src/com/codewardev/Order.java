@@ -17,8 +17,7 @@ public class Order {
 		Pattern pattern = Pattern.compile("[0-9]");
 		for(int i=0; i<word.length; i++) {
 			Matcher matcher = pattern.matcher(word[i]);
-			int digit=-1;
-			if(matcher.find()) digit = Character.getNumericValue(word[i].charAt(matcher.start()));
+			int digit= matcher.find() ? Character.getNumericValue(word[i].charAt(matcher.start())) : -1;
 			word[i] = digit + word[i];
 		}
 		
